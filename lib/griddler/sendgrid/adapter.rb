@@ -27,7 +27,7 @@ module Griddler
       end
 
       def attachment_files
-        info = JSON.parse params.delete('attachment-info')
+        info = JSON.parse(params.delete('attachment-info')) rescue {}
         attachment_count = params[:attachments].to_i
         attachment_count.times.map do |index|
           params.delete("attachment#{index + 1}".to_sym).tap{|file|
